@@ -1,4 +1,5 @@
 # stock-management
+
 ## This project aims to solve the stock/inventory management problem common to a lot of business verticals like hospitals, industries etc.
 
 
