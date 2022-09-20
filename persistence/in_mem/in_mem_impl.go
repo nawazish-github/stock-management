@@ -1,8 +1,6 @@
 package in_mem
 
-import (
-	"github.com/nawazish-github/stock-management/persistence/models"
-)
+import "github.com/nawazish-github/stock-management/models"
 
 type InMemImpl struct {
 	// store is a map from item category to it's count.

@@ -1,9 +1,8 @@
-package persistence
+package controller
 
 import "github.com/nawazish-github/stock-management/models"
 
-type Repository interface {
+type Controller interface {
 	Add(item models.Item)
-	Find(item models.Item) models.ItemStats
 	Remove(item models.Item)
 }
