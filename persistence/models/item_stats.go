@@ -1,7 +1,7 @@
 package models
 
 type ItemStats struct {
-	Items       []Item
+	Item        string
 	Count       int
 	Description string
 }
