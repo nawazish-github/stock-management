@@ -6,6 +6,5 @@ type Event interface {
 	Trigger(models.Item)
 }
 
-// EventHandler implementors would know exactly 
-// how to send the event to the recepient. 
-
+// EventHandler implementors would know exactly
+// how to send the event to the recepient.

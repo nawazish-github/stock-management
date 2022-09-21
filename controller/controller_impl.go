@@ -8,11 +8,11 @@ import (
 )
 
 type ControllerImpl struct {
-	repo persistence.Repository
+	repo  persistence.Repository
 	event event.Event
 }
 
-func NewControllerImpl() Controller{
+func NewControllerImpl() Controller {
 	return &ControllerImpl{
 		repo:  in_mem.NewInMemImpl(),
 		event: event.NewEventImpl(),
@@ -23,10 +23,10 @@ func NewControllerImpl() Controller{
 // and we trigger an event
 func (cntrlr *ControllerImpl) Add(item models.Item) {
 	cntrlr.repo.Add(item)
-	cntrlr.event.Trigger(item)	
+	cntrlr.event.Trigger(item)
 }
 
 func (cntrlr *ControllerImpl) Remove(item models.Item) {
 	cntrlr.repo.Remove(item)
-	cntrlr.event.Trigger(item)	
+	cntrlr.event.Trigger(item)
 }
