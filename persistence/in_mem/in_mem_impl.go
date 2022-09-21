@@ -1,10 +1,24 @@
 package in_mem
 
-import "github.com/nawazish-github/stock-management/models"
+import (
+	"github.com/nawazish-github/stock-management/models"
+	"github.com/nawazish-github/stock-management/persistence"
+)
+
+var inMemImpl persistence.Repository
 
 type InMemImpl struct {
 	// store is a map from item category to it's count.
 	store map[string]int
+}
+
+func NewInMemImpl() persistence.Repository {
+	if inMemImpl == nil {
+		return &InMemImpl{
+			store: make(map[string]int),
+		}
+	}
+	return inMemImpl
 }
 
 func (i *InMemImpl) Add(item models.Item) {
