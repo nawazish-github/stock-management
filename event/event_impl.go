@@ -29,3 +29,7 @@ func (e *EventImpl) Trigger(item models.Item) {
 		}) // TODO: error handling
 	}
 }
+
+func (e *EventImpl) AddHandlers(h ...handlers.EventHandler) {
+	e.eventHandlers = append(e.eventHandlers, h...)
+}
