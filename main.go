@@ -3,13 +3,13 @@ package main
 import (
 	"time"
 
-	"github.com/nawazish-github/stock-management/controller"
+	"github.com/nawazish-github/stock-management/client"
 	"github.com/nawazish-github/stock-management/models"
 )
 
 func main() {
-	ctrlr := controller.NewControllerImpl()
-	ctrlr.Add(models.Item{
+	c := client.Client
+	c.Add(models.Item{
 		ID:       0,
 		Name:     "Ball",
 		Category: "Toy",

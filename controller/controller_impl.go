@@ -23,10 +23,20 @@ func NewControllerImpl() Controller {
 // and we trigger an event
 func (cntrlr *ControllerImpl) Add(item models.Item) {
 	cntrlr.repo.Add(item)
-	cntrlr.event.Trigger(item)
+	itemStats := cntrlr.repo.Find(item)
+	if trigger := isItemBelowMinReq(itemStats); trigger {
+		cntrlr.event.Trigger(item)
+	}
 }
 
 func (cntrlr *ControllerImpl) Remove(item models.Item) {
-	cntrlr.repo.Remove(item)
-	cntrlr.event.Trigger(item)
+	cntrlr.repo.Remove(item) // TODO: Remove might return the next available stock stats but this would break CQ pattern
+	itemStats := cntrlr.repo.Find(item)
+	if trigger := isItemBelowMinReq(itemStats); trigger {
+		cntrlr.event.Trigger(item)
+	}
+}
+
+func isItemBelowMinReq(is models.ItemStats) bool {
+	return is.Count < is.MinReq
 }

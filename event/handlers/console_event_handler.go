@@ -12,6 +12,6 @@ func NewConsoleEventHandlerImpl() EventHandler {
 	return &ConsoleEventHandlerImpl{}
 }
 
-func (email *ConsoleEventHandlerImpl) Handle(item models.Item) {
-	fmt.Printf("Console Event triggered: %v\n", item)
+func (email *ConsoleEventHandlerImpl) Handle(event models.Event) {
+	fmt.Printf("Console Event triggered: %v\n", event.Item)
 }
